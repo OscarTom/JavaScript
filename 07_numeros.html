@@ -1,0 +1,40 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Template Strings</h1>
+
+        <script>
+            let a = 2;
+            let b = new Number(1);
+            let c = 7.19;
+            let d ="5.6";
+
+            console.log(a,b);
+            console.log(c.toFixed(1)); //Redondeo de decimales
+            console.log(c.toFixed(3));
+            console.log(parseInt(c)); //Solo devuelve la parte entera 7
+            console.log(parseFloat(c));//Solo la parte decimal
+            console.log(typeof c, typeof d); //nos dice el tipo de variable
+
+            console.log(c+d); //Concatena porque uno de los valores es string 7.195.6
+
+            //Casting, cambio de tipo de dato
+            console.log(c + parseInt(d)); //solo suma la parte entera
+            console.log(c + parseFloat(d)); //Suma correcta      
+            
+            console.log(c + Number.parseInt(d)); //Cuelga directamente de objeto Number
+            console.log(c + Number.parseFloat(d)); //JavaScrip ya lo sabe y por eso no hace falta ponerlo
+        
+
+        </script>
+
+    </body>
+
+</html>

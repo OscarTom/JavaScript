@@ -1,0 +1,55 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Arrays</h1>
+
+        <script>
+            const a = [];
+            const b = [1, true, "Hola", ["A", "B", "C"]];
+            const c = [1, true, "Hola", ["A", "B", "C", [1,2,3,4]]];
+            console.log(a);
+            console.log(b);
+            console.log(b.length);
+            console.log(b[2]);
+            console.log(b[3]);
+            console.log(b[3][2]); //Accedemos al array que hay dentro del array
+            console.log(c[3][3][2]); //Accedemos al array que hay dentro del array
+
+            //otra forma de crear Arrays
+            const d = Array.of("X", "Y", "Z", 3, 4,5);
+            console.log(d);
+
+            //Otra forma. 
+            //Array de 100 posiciones e inicializadas con el valor false
+            const e = Array(100).fill(false);
+            console.log(e);
+
+            //forma menos usada
+            const f = new Array();
+            console.log(f);
+
+            //Metodos
+            const colores = ["Rojo", "Verde", "Azul"];
+            console.log(colores);
+            colores.push("Negro"); //agrega un elemento al final
+            console.log(colores);
+            colores.pop(); //elimina el ultimo elemento
+            console.log(colores);
+
+            colores.forEach(function(col, index){
+                console.log(`<li id="${index}"> ${col} </li>`)
+            });
+
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Herencia</h1>
+        
+        <script>
+            // Funcion constructora donde asignamos lo metodos al prototipo
+            function Animal (nombre,genero) {
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+            /*Los metemos fuera para no cargar la memoria y mejorar el rendimiento. Asi no forman
+            parte del contructor si no que cada instancia hara uso de ellos si quiere*/
+            Animal.prototype.sonar = function(){
+                console.log("Hago sonidos porque estoy vivo")
+            } 
+            Animal.prototype.saludar = function(){
+                console.log(`Hola me llamo ${this.nombre}`)
+            }
+            
+            //Herencia Prototipica
+            function Raton(nombre, genero,tamanio){
+                this.super = Animal;
+                this.super(nombre, genero);
+                this.tamanio = tamanio;
+            }
+            //Raton esta heredando de animal
+            Raton.prototype = new Animal();
+            Raton.prototype.constructor = Raton;
+
+            //Sobreescritura de metodo del Prototipo padre en el hijo
+            Raton.prototype.sonar = function(){
+                console.log("Soy un raton y mi sonoido es ñi, ñi!!")
+            }
+            Raton.prototype.nini = function(){
+                console.log("Ñi, ñi!!");
+            }
+
+             const mickey = new Raton("Mickey", "masculino", "mediano");
+             const pluto = new Animal("Pluto", "masculino");
+             console.log(mickey); 
+             console.log(pluto); 
+
+             mickey.sonar();
+             pluto.sonar();
+
+             mickey.nini();
+            
+
+        </script>
+
+    </body>
+
+</html>

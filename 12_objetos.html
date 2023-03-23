@@ -1,0 +1,60 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Objetos</h1>
+        
+        <script>
+            let a = new String("Hola");
+            console.log(a);
+
+            const b = {};
+            console.log(b);
+
+            const c = new Object();
+            console.log(c);
+
+
+            //Los objetos se decaran con { }
+            const datos = {
+                nombre: "Osc",
+                apellido: "Tom",
+                edad: 40,
+                pasatiempos: ["Correr", "HacerEjercicio"],
+                casado: true,
+                contacto: {
+                    email: "os@df.com",
+                    movil: 6542458
+                },
+                saludar: function(){
+                    console.log("Hola")
+                },
+                decirMiNombre:function(){
+                    console.log(`Hola me llamo ${this.nombre} ${this.apellido} y ${this.contacto.email}`)
+                }
+            }
+            console.log(datos);
+            console.log(datos.nombre);
+            console.log(datos.saludar());
+            console.log(datos.pasatiempos[1]);
+            console.log(datos.contacto.email);
+            console.log(datos.decirMiNombre());
+
+            console.log(Object.keys(datos));
+            console.log(Object.values(datos));
+            console.log(datos.hasOwnProperty("nombre"));
+            
+
+            
+
+        </script>
+
+    </body>
+
+</html>

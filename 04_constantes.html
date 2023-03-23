@@ -1,0 +1,48 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Fundamentos JavaScript</h1>
+        <script>
+            //No podemos declarar constantes vacias const NUEVE;
+            const PI = 3.1416;
+            console.log(PI);
+            // PI = 2.35; error no se puede cambiar su valor, son Primitivos
+
+            let a;
+            a = "Kenia";
+            console.log(a);
+
+            const objeto = {  //Objeto
+                nombre: "Jon",
+                edad:35
+            }
+
+            const colores = ["blanco", "negro", "azul"]; //Array
+
+            console.log(objeto);
+            console.log(colores);
+
+            //Podemos añadir propiedades al objeto
+            objeto.correo="ght@gmh.com"
+            console.log(objeto);
+
+            //podemos añadir cosas al Array
+            colores.push("anaranjado");
+            console.log(colores);
+
+            /*Conclusion a los valores primitivos(string, number, boolean, null, undefined, NaN)
+             no se les puede cambiar el valor pero a los compuestos (object, array, function, class...)
+             como arrays y objetos si se les puede añadir mas elementos*/
+
+        </script>
+
+    </body>
+
+</html>

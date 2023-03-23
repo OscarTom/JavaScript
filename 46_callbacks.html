@@ -1,0 +1,39 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Callbacks</h1>
+        
+        <script>
+            //Callbacks funcion que se va a ejecutar despues de otra
+            //Sirve para controlar la asincronia y podamos controlarlo
+
+            function cuadradoCallback(value,callback){
+                setTimeout(() => {
+                    callback(value, value*value);
+                },0 | Math.random()*1000);
+            }
+
+            cuadradoCallback(0, (value,result) => {
+                console.log("Incia callback");
+                console.log(`Callback: ${value},${result}`);
+                cuadradoCallback(4, (value,result) => {
+                    console.log(`Callback: ${value},${result}`);
+                    cuadradoCallback(10, (value,result) => {
+                        console.log(`Callback: ${value},${result}`);
+                    });
+                });
+            });
+            
+
+        </script>
+
+    </body>
+
+</html>

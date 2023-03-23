@@ -1,0 +1,89 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Objeto consola</h1>
+        
+        <script>
+            console.log(console);
+            console.error("Esto es un error");
+            console.warn("Esto es un aviso");
+            console.info("Esto es para dar informacion");
+            console.log("Registro de lo que ha pasado en la aplicacion");
+
+            let nombre = "Jon",
+                apellido = "MirCha",
+                edad = 35;
+
+            console.log(nombre,apellido,edad);
+            console.log(`Hola mi nombre es ${nombre} ${apellido} y tengo ${edad} años`);
+            console.log(`Hola mi nombre es %s %s y tengo %d años`, nombre,apellido,edad);
+
+            console.clear(); //limpia la consola
+
+            console.log(window);
+            console.log(document);
+            console.dir(window);
+            console.dir(document);
+            console.clear(); //limpia la consola
+
+            //Grupos en la consola .group .groupCollapsed
+            console.group("Los cursos de @JonMircha en Youtube");
+            console.log("Curso de Js");
+            console.log("Curso de Php");
+            console.log("Curso de Node.js");
+            console.groupEnd();
+            console.log("Esto esta fuera del grupo");
+            
+            //Tablas en la consola
+            console.table(Object.entries(console));
+            console.clear();
+
+            const numeros = [1,2,3,4,5];
+            const vocales = ["a","e","i","o","u"];
+
+            console.table(numeros);
+            console.table(vocales);
+
+            const perro = {
+                nombre: "Boni",
+                raza: "boxer",
+                color: "cafe"
+            }
+            console.table(perro);
+            console.clear();
+
+            //Tiempos console.time(etiqueta, tiene que ser igual al inicio y al final)
+            console.time("Cuanto tiempo tarda mi codigo? - Inicio -final");
+            const arreglo = Array(1000000);
+            for(let i=0;i<arreglo.length;i++){
+                arreglo[i] = i;
+            }
+            console.timeEnd("Cuanto tiempo tarda mi codigo? - Inicio -final");
+            console.clear()
+
+            //cuantas veces se ha ejecutado una parte de codigo
+            for(let i=0;i<=10;i++){
+                console.count("codigo for")
+                console.log(i);
+            }
+            console.clear();
+
+            //Pruebas, mini libreria
+            let x = 3,
+                y = 2,
+                pruebaXY = "Se espera que x siempre sea menor que y"
+
+            console.assert(x<y,{x,y,pruebaXY});
+
+
+        </script>
+
+    </body>
+
+</html>

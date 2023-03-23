@@ -1,0 +1,72 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Loops</h1>
+        
+        <script>
+            let contador = 0;
+
+            while (contador < 10){
+                console.log("while" + contador);
+                contador++;
+            }
+
+            /*do while, al menos se ejecuta una vez porque comprueba la condicion
+            al final*/
+            do{
+                console.log("do while" + contador);
+                contador++;
+            }while(contador<10);
+
+            //FOR
+            for (let i=0; i<10; i++) {
+                console.log("for" + i); 
+            }
+
+            //Lo recorre el numero de elementos que tiene el array
+            let numeros = [10,20,30,40,50]
+            for(let i=0; i<numeros.length; i++){
+                console.log("array" + i);
+                console.log(numeros[i]);
+            }
+
+            //For in. Permite recorrer o iterar las propiedades de in objeto
+            const jon = {
+                nombre: "Jon",
+                apellido: "Mircha",
+                edad: 37
+            }
+
+            for(const propiedad in jon){
+                console.log(propiedad);
+            }
+
+            for(const propiedad in jon){
+                console.log(`Key: ${propiedad}, Value: ${jon[propiedad]}`);
+                //para acceder no vale la notacion de jon.propiedad
+                //tiene que ser con la notacion de corchetes jon[propiedad]
+            }
+
+            //For of. Permite recorrer todos los elementos de cualquier objeto iterable en JScript
+            for(const elemento of numeros){
+                console.log(elemento);
+            } 
+
+            let cadena = "Hola Mundo";
+            for(const caracter of cadena){
+                console.log(caracter);
+            }
+            
+
+        </script>
+
+    </body>
+
+</html>

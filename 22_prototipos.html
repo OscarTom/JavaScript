@@ -1,0 +1,79 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Prototipos</h1>
+        
+        <script>
+            /* 
+             POO
+                Clases - Modelo a seguir
+                Objetos  - Es una instancia de una clase y tiene:
+                  Atributos  - Caracteristica o propiedad del objeto(son variables)
+                  Metodos  - Acciones que un objeto puede realizar (son funciones)
+
+            Como e JS no existen las clases, los transforma en prototipos
+            */
+
+            const animal = {
+                nombre: "Snoopy",
+                sonar(){
+                    console.log("Hago sonidos porque estoy vivo")
+                }
+            }
+            console.log(animal); //Prototipo literal, tienes sus atributos y metodos
+
+            const animal2 = {
+                nombre: "Lola Bunny",
+                sonar(){
+                    console.log("Hago sonidos porque estoy vivo")
+                }
+            }
+            console.log(animal2);
+
+
+            //Funcion constructora
+            /*function Animal (nombre,genero) {
+                this.nombre = nombre;
+                this.genero = genero;
+                this.sonar = function(){
+                    console.log("Hago sonidos porque estoy vivo")
+                } 
+                this.saludar = function(){
+                    console.log(`Hola me llamo ${this.nombre}`)
+                }
+            }*/
+
+            // Funcion constructora donde asignamos lo metodos al prototipo
+            function Animal (nombre,genero) {
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+            /*Los metemos fuera para no cargar la memoria y mejorar el rendimiento. Asi no forman
+            parte del contructor si no que cada instancia hara uso de ellos si quiere*/
+            Animal.prototype.sonar = function(){
+                console.log("Hago sonidos porque estoy vivo")
+            } 
+            Animal.prototype.saludar = function(){
+                console.log(`Hola me llamo ${this.nombre}`)
+            }
+            
+             const mickey = new Animal("Mickey", "masculino");
+             const pluto = new Animal("Pluto", "masculino");
+             console.log(mickey); 
+             console.log(pluto); 
+
+             mickey.saludar();
+             pluto.saludar();
+
+        </script>
+
+    </body>
+
+</html>

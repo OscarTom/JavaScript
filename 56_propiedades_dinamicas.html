@@ -1,0 +1,27 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Propiedades dinamicas</h1>
+        
+        <script>
+            const objUsuarios = {}
+            const usuarios = ["Jon","Irma","Miguel","Kala","Osc"];
+            console.log(objUsuarios);
+
+            usuarios.forEach((usuario,index) => objUsuarios[`id_${index}`] = usuario);
+
+            console.log(objUsuarios);
+            
+
+        </script>
+
+    </body>
+
+</html>

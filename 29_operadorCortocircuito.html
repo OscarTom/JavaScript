@@ -1,0 +1,36 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Operador cortocircuito</h1>
+        
+        <script>
+            /*
+            OR (||) si es true aplica el valor, si no aplica el valor de la derecha 
+            AND (&&) si es false aplica el valor, si no aplica el valor de la derecha
+            */
+            function saludar(nombre){
+                nombre = nombre || "Desconocido"; //cortocircuito
+                console.log(`Hola ${nombre}`);
+            }
+            saludar();
+            saludar("Jon");
+
+            console.log("cadena" || "Valor derecha");
+            console.log(3>5 || "Valor derecha");
+            
+            console.log("cadena" && "Valor derecha");
+            console.log(3>5 && "Valor derecha");
+            
+            
+        </script>
+
+    </body>
+
+</html>

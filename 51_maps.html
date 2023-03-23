@@ -1,0 +1,63 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Nuevos tipos de datos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Maps</h1>
+        
+        <script>
+           //Son objetos que sirven para almacenar valores asociados, es parecido a un diccionario
+            const mapa = new Map();
+
+            mapa.set("nombre","Jon");
+            mapa.set("apellido","Mircha");
+            mapa.set("edad",35);
+            console.log(mapa);
+            console.log(mapa.size); //tamaño del mapa
+            console.log(mapa.has("correo")); //comprobar si existe un campo
+            console.log(mapa.has("nombre"));
+            console.log(mapa.get("nombre")); //Obtener un campo
+            mapa.set("nombre","osc"); //Sobreescribir un campo
+            console.log(mapa.get("nombre")); //Obtener un campo
+            mapa.delete("apellido"); //Eliminar un campo
+            console.log(mapa);
+
+            //añadir cosas raras a un map
+            mapa.set(19,"diecinueve");
+            mapa.set(false,"falso");
+            mapa.set({},{});
+
+            console.log(mapa);
+
+            //recorrer un mapa
+            for (let [key,value] of mapa){
+                console.log(`Llave: ${key}, valor: ${value}`);
+            }
+
+
+            //otra manera de inicializar un mapa
+            const mapa2 = new Map([
+                ["nombre","kenai"],
+                ["edad",7],
+                ["animal","perro"]
+            ]);
+            console.log(mapa2);
+
+            //Almacenar los keys y values
+            const llavesMapa2 = [...mapa2.keys()];
+            const valoresMapa2 = [...mapa2.values()];
+
+            console.log(llavesMapa2);
+            console.log(valoresMapa2);
+
+
+        </script>
+
+    </body>
+
+</html>

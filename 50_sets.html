@@ -1,0 +1,59 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Nuevos tipos de datos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Sets</h1>
+        
+        <script>
+            //SET filtra y solo almacenas valores unicos. Elimina los repetidos. Es un array filtrado
+            const set = new Set([1,2,3,3,8,5,true, false, true, {}, "hola", "HOLA"]);
+            console.log(set);
+            console.log(set.size); //Elementos NO repetidos
+
+            const set2 = new Set();
+            set2.add(1);
+            set2.add(2);
+            set2.add(2);
+            set2.add({});
+            set2.add(false);
+            set2.add(false);
+            console.log(set2);
+            console.log(set2.size); //Elementos NO repetidos
+
+            //recorrer un set, sin repetir elementos
+            console.log("Recorriendo set");
+            for (item of set){
+                console.log(item);
+            }
+
+            console.log("Recorriendo set2");
+            set2.forEach(item => console.log(item));
+
+            //Acceder a un elemento, hay que convertir el set en un arreglo con Array.from
+            let arr = Array.from(set);
+            console.log(arr);
+            console.log(arr[2]);
+
+            //eliminar valores
+            set.delete("hola");
+            console.log(set);
+
+            //comprueba si el valos existe en los datos has, devuelve true o false
+            console.log(set.has(8));
+
+            //Limpiar un set, lo vacia
+            set2.clear();
+            console.log(set2);
+
+
+        </script>
+
+    </body>
+
+</html>

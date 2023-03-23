@@ -1,0 +1,53 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> This Java Script</title>
+    </head>
+
+    <body>
+        <h1>Json JavaScrip Object Notation</h1>
+        
+        <script>
+            const json = {
+                cadena: "Jon",
+                numero: 35,
+                booleano: true,
+                arreglo: ["correr", "programar", "cocinar"],
+                objeto: {
+                  twitter: "@jonmircha",
+                  email: "jonmircha@gmail.com"
+                },
+                nulo: null
+              }
+              console.log(json); //IMPRIME EL OBJETO NORMAL
+
+              //parse lo convierte en valido para Java Script
+              console.log("{}");
+              console.log(JSON.parse("{}")); //la consola lo detecta como un objeto
+              console.log(JSON.parse("[1,2,3,4]")); //la consola lo detecta como un array
+              console.log(JSON.parse("true")); //la consola lo detecta como un boolean
+              console.log(JSON.parse("19")); //la consola lo detecta como un numero
+              console.log(JSON.parse("null"));
+
+              //stingify lo convierte en texto
+              console.log(JSON.stringify({})); //lo convierte en texto
+              console.log(JSON.stringify(true)); //lo convierte en texto
+              console.log(JSON.stringify(19)); //lo convierte en texto
+              console.log(JSON.stringify({x:1, y:3})); //Lo convierte a formato JSON
+
+              console.log(JSON.stringify(json));//convierte el objeto en formato JSON
+
+              const uno = JSON.stringify(json);
+              console.log(JSON.parse(uno)); //lo volvemos a convertir en formato objeto Java Script
+              
+
+              
+
+        </script>
+
+    </body>
+
+</html>

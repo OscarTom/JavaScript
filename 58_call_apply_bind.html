@@ -1,0 +1,49 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> This Java Script</title>
+    </head>
+
+    <body>
+        <h1>call apply y bind</h1>
+        
+        <script>
+            //Contexto global
+            console.log(this);
+            this.lugar = "Contexto global";
+
+            function saludar(saludo, aQuien) {
+                console.log(`${saludo} ${aQuien} desde el ${this.lugar}`);
+            }
+            saludar("Hola", "Kanai");
+
+            //Objeto
+            const obj = {
+                lugar: "Contexto OBJETO"
+            }
+            saludar.call(obj, "Hola", "Jon"); //Ejecuta el contexto del objeto (contexto, parametro, parametro)
+            saludar.apply(obj,["Adios","Jon"]);
+            //Diferencia entre call y apply esta en los parametros
+
+            //bind, para saltar de un contexto a otro
+            const persona = {
+                nombre: "Jon",
+                saludar: function() {
+                    console.log(`Hola ${this.nombre}`);
+                }
+            }
+            persona.saludar();
+
+            const otraPersona = {
+                saludar: persona.saludar.bind(persona) //enlaza el contexto de persona
+            }
+            otraPersona.saludar(); //Devolvera 'Hola Jon'
+
+        </script>
+
+    </body>
+
+</html>

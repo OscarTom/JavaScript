@@ -1,0 +1,44 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Objetos literales</h1>
+        
+        <script>
+            let nombre = "Kenai",
+                edad = 7;
+
+            const perro = {
+                nombre: nombre,
+                edad: edad,
+                ladrar: function(){
+                    console.log("guau, guau!!")
+                }
+            }
+
+            console.log(perro);
+            perro.ladrar();
+
+            //Con las caracteristicas nuevas de objetos literales
+            //si la propiedad tiene el mismo nombre  que el valor entoneces no hace falta
+            const dog ={
+                nombre,
+                edad,
+                raza: "callejero",
+                ladrar(){
+                    console.log("guau, guau,guau")
+                }
+            }
+            console.log(dog);
+            dog.ladrar();
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Template Strings</h1>
+
+        <ul>
+            <li>Invierno</li>
+            <li>Primavera</li>
+            <li>Verano</li>
+            <li>Otoño</li>
+        </ul>
+
+       
+        <script>
+         let nombre = "Jon";
+         let apellido = "Mircha";
+
+         //Concatenacion
+         let saludo = "Hola mi nombre es " + nombre + " " + apellido;
+         console.log(saludo);
+
+         //Interpolacion de variables
+         //Template String ` ` esta al lado del enter
+         let saludo2 = `Hola mi nombre es ${nombre} ${apellido}`;
+         console.log(saludo2);
+
+         //asi hay que hacerlo en la misma linea
+         let ul = "<ul> <li>Invierno</li> <li>Primavera</li> <li>Verano</li> <li>Otoño</li> </ul>";
+         console.log(ul);
+
+         //Con las ` ` si nos permite hacer saltos de linea
+         let ul2 = `
+         <ul>
+            <li>Invierno</li>
+            <li>Primavera</li>
+            <li>Verano</li>
+            <li>Otoño</li>
+        </ul>`;
+        console.log(ul2);
+
+        //otra manera de hacerlo pero mucho mas tediosa
+        let ul3 = "<ul>"
+            ul3 += "<li>Invierno</li>";
+            ul3 += "<li>Primavera</li>";
+            ul3 += "<li>Verano</li>";
+            ul3 += "<li>Otoño</li>";
+            ul3 += "</ul>";
+        console.log(ul3);
+            
+            
+            
+            
+        
+
+        </script>
+
+    </body>
+
+</html>

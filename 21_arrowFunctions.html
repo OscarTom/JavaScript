@@ -1,0 +1,64 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Arrow functions</h1>
+        
+        <script>
+            //Funcion expresada
+            const saludar = function(){
+                console.log(`Hola`);
+            }
+            saludar();
+
+            const saludarArrowSinParametro = () => console.log("Hola sin parametro");
+            saludarArrowSinParametro();
+            //cuando le pasamos UN parametro tambien se pueden quitar los ()
+            const saludarArrow = nombre => console.log(`Hola Arrow ${nombre}`);
+            saludarArrow("Irma");
+
+            const sumar = (a,b) => a+b;
+            console.log(sumar(10,5));
+
+            //con varias lineas de codigo
+            const funcionDeVariasLineas = () => {
+                console.log("uno");
+                console.log("dos");
+                console.log("tres");
+            }
+            funcionDeVariasLineas();
+
+
+            const numeros = [1,2,3,4,5];
+            numeros.forEach(function(el,index){
+                console.log(`El elemento ${el} esta en la posicion ${index}`);
+            });
+
+            numeros.forEach((el,index) => console.log(`El elemento ${el} esta en la posicion ${index}`));
+            
+            //Contexto this, la arrow function reconoce el objeto global donde se encuentran
+            /*function Perro(){
+                console.log(this);
+            }
+            Perro();*/
+
+            const perro = {
+                nombre: "Kenai",
+                ladrar: () => {
+                    console.log(this)
+                } 
+            }
+            perro.ladrar();
+            
+
+        </script>
+
+    </body>
+
+</html>

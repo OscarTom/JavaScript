@@ -1,0 +1,42 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>16_manejoErrores.html</h1>
+        
+        <script>
+            try{
+                console.log("En el try se agrega el codigo a evaluar");
+                noExiste;
+                console.log("Segundo mensaje en el try");
+            }catch (error){
+                console.log("Catch captura cualquier error surgido en el try");
+                console.log(error);
+            }finally {
+                console.log("Finally se ejecuta siempre al final del bloque try-catch");
+            }
+            
+            console.log("*******************************************");
+            try{
+                let numero = "10";
+                if(isNaN(numero)){
+                    throw new Error("El caracter introducido no es un numero");
+                }
+                console.log(numero*numero);
+            }catch(error){
+                console.log(`Se produjo el siguiente error: ${error}`);
+
+            }
+            
+
+        </script>
+
+    </body>
+
+</html>

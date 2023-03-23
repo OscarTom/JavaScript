@@ -1,0 +1,49 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Rest & Spread</h1>
+        
+        <script>
+            /*REST forma virtual de agregar parametros a una funcion o variable,
+            no sabes cuantos vas recibir*/
+
+            function sumar(a,b){
+                return a +b;
+            }
+
+            function sumarRest(a,b, ...c){
+                let resultado = a +b;
+
+                c.forEach(function (n){
+                    resultado += n
+                });
+                return resultado;
+            }
+
+            console.log(sumarRest(1,2));
+            console.log(sumarRest(1,2,3));
+            console.log(sumarRest(1,2,4,5,7));
+            console.log(sumarRest(1,2,12,34));
+   
+            /* Spread operator*/
+            const arr1 = [1,2,3,4,5];
+                arr2 = [6,7,8,9,10];
+            console.log(arr1,arr2);
+
+            const arr4 = [arr1,arr2];
+            console.log(arr4); //Arr4 es un arreglo de dos arreglos
+            const arr3 = [...arr1, ...arr2]; //mete los arr1 y arr2 en uno solo
+            console.log(arr3);
+
+        </script>
+
+    </body>
+
+</html>

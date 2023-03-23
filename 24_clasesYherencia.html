@@ -1,0 +1,64 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Clases y herencia</h1>
+        
+        <script>
+            class Animal{
+                //constructor
+                constructor(nombre, genero){
+                    this.nombre = nombre;
+                    this.genero = genero ;
+                }
+                //Metodos
+                sonar(){
+                    console.log("Hago sonidos porque estoy vivo")
+                } 
+                saludar(){
+                    console.log(`Hola me llamo ${this.nombre}`)
+                }
+            }
+
+            class Perro extends Animal {
+                constructor(nombre, genero, tamanio){
+                    //super() manda llamar al constructor padre
+                    super(nombre, genero);
+                    this.tamanio = tamanio;
+                }
+
+                //Sobreescritura de metodo
+                sonar(){
+                    console.log("Soy un perro y ladro")
+                } 
+                ladrar(){
+                    console.log(`Guau, guau!!`)
+                }
+
+            }
+
+            const minie = new Animal("Minie", "hembra");
+            const scooby = new Perro("Scooby", "macho", "gigante");
+
+            console.log(minie);
+            console.log(scooby);
+
+            minie.saludar();
+            minie.sonar();
+            
+            scooby.saludar();
+            scooby.sonar();
+            scooby.ladrar();
+            
+
+        </script>
+
+    </body>
+
+</html>

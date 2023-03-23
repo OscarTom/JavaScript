@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST AJAX</title>
+</head>
+<body>
+    <h1>CRUD API REST AJAX</h1>
+
+    <section class="crud">
+        <article>
+            <h2 class="crud-title">Agregar santo</h2>
+            <form class="crud-form">
+                <input type="text" name="nombre" placeholder="nombre" required>
+                <br>
+                <input type="text" name="constelacion" placeholder="constelacion" required>
+                <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+
+        <article>
+            <h2>Ver santos</h2>
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Constelacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </article>
+    </section>
+
+<!--Creamos un template que se introducira en la etiqueta <tbody>-->
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="constellation"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+
+    <script>
+        const d = document,
+            $table = d.querySelector(".crud-table"),
+            $form = d.querySelector(".crud-form"),
+            $title = d.querySelector(".crud-title"),
+            $template = d.getElementById("crud-template").content,
+            $fragmen = d.createDocumentFragment();
+
+            //creamos una funcion para la conexion y apertura de la conexion
+            const ajax = (options) => {
+                let {url, method, success, error, data} = options;
+                const xhr = new XMLHttpRequest();
+
+                //console.log(options);
+
+                xhr.addEventListener("readystatechange", (e) => { //Que ocurre al cambio
+                    if(xhr.readyState !== 4) return; //si la respuesta es distinto de 4, retorno vacio
+
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        let json = JSON.parse(xhr.responseText);
+                        success(json);
+                    } else {
+                        let message = xhr.statusText || "Ocurrio un error";
+                        error(`<mark> Error ${xhr.status}: ${message} </mark>`);
+                    }
+ 
+                });
+
+                xhr.open(method || "GET", url);
+                xhr.setRequestHeader("Content-type","application/json; charset=utf-8"); //Hay que especificar la cabecera para que funcione
+                xhr.send(JSON.stringify(data)); //Convertimos el json a cadena de texto
+            }
+
+            const getAll = () => {
+                ajax({
+                    method: "GET",
+                    url: "http://localhost:5555/santos",
+                    success: (res) => {
+                        //console.log(res)
+                        res.forEach(el => {
+                            $template.querySelector(".name").textContent = el.nombre;
+                            $template.querySelector(".constellation").textContent = el.constelacion;
+                            $template.querySelector(".edit").dataset.id = el.id; // le agregamos a los botones data para luego localizarlos cuando queramos borra o modificar
+                            $template.querySelector(".edit").dataset.name = el.nombre;// le agregamos a los botones data para luego localizarlos cuando queramos borra o modificar
+                            $template.querySelector(".edit").dataset.constellation = el.constelacion;// le agregamos a los botones data para luego localizarlos cuando queramos borra o modificar
+                            $template.querySelector(".delete").dataset.id = el.id;// le agregamos a los botones data para luego localizarlos cuando queramos borra o modificar
+
+                            let $clone = d.importNode($template, true);
+                            $fragmen.appendChild($clone);
+                        });
+                        $table.querySelector("tbody").appendChild($fragmen);
+                    },
+                    error: (err) => {
+                        //console.log(err)
+                        $table.insertAdjacentHTML("afterend", err);
+                    },
+                    data: null
+                })
+            }
+            d.addEventListener("DOMContentLoaded", getAll); //A la carga del documento nos trae todos los elementos del servidor
+
+            d.addEventListener("submit", (e) => { //Accion al darle al boton enviar del formulario
+                if(e.target === $form) {
+                    e.preventDefault();
+                    if(!e.target.id.value){ //vemos si en el elemento hidden existe id para discriminar si es crete u update
+                        //CREATE - post
+                        ajax({
+                            url: "http://localhost:5555/santos",
+                            method: "POST",
+                            success: (res) => location.reload(), //recargamos el navegador
+                            error: (err) => $form.insertAdjacentHTML("afterend", `<mark> Error ${xhr.status}: ${message} </mark>`),
+                            data: {
+                                nombre: e.target.nombre.value,
+                                constelacion: e.target.constelacion.value
+                            }
+                        });
+                    } else {
+                        //UPDATE - put
+                        ajax({
+                            url: `http://localhost:5555/santos/${e.target.id.value}`,
+                            method: "PUT",
+                            success: (res) => location.reload(), //recargamos el navegador
+                            error: (err) => $form.insertAdjacentHTML("afterend", `<mark> Error ${xhr.status}: ${message} </mark>`),
+                            data: {
+                                nombre: e.target.nombre.value,
+                                constelacion: e.target.constelacion.value
+                            }
+                        });
+                    }
+                }
+            });
+
+            d.addEventListener("click", (e) => {
+                if(e.target.matches(".edit")){
+                    //console.log("Presionaste editar");
+                    //Cambiamos el titulo de la pagina y ponemos los valores en el formulario cuando queremos editar algun campo
+                    $title.textContent = "Editar santo";
+                    $form.nombre.value = e.target.dataset.name;
+                    $form.constelacion.value = e.target.dataset.constellation;
+                    $form.id.value = e.target.dataset.id;
+                }
+                if(e.target.matches(".delete")){
+                    let isDelete = confirm(`Estas seguro de eliminar el id ${e.target.dataset.id}?`);
+
+                    if(isDelete) {
+                        ajax({
+                            url: `http://localhost:5555/santos/${e.target.dataset.id}`,
+                            method: "DELETE",
+                            success: (res) => location.reload(), //recargamos el navegador
+                            error: () => alert(err),
+                            
+                        });
+                    } else {
+                        alert("No se ha eliminado");
+                        location.reload();
+                    }
+                }
+            })
+
+    </script>
+    
+</body>
+</html>

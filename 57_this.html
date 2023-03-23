@@ -1,0 +1,72 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Fundamentos Java Script</title>
+    </head>
+
+    <body>
+        <h1>this</h1>
+        
+        <script>
+            //this, referencia al objeto que estamos utilizando
+            console.log(this);
+            console.log(window);
+            console.log(this===window); //devuelve true
+
+            this.nombre = ("contexto global");
+            console.log(this.nombre);
+
+            function imprimir() {
+                console.log(this.nombre);
+            }
+            imprimir();
+
+            //Si nos referimos a un objeto this hara referencia a ese objeto
+            const obj = {
+                nombre: "contexto OBJETO",
+                imprimir: function(){
+                    console.log(this.nombre);
+                }
+            }
+            obj.imprimir();
+
+            //que pasa en este caso? Sigue manejando contexto obj2
+            const obj2 = {
+                nombre: "Contexto OBJETO 2",
+                imprimir: imprimir //hace referencia a la funcion imprimir general linea 22
+            }
+            obj2.imprimir();
+
+            //que pasa en este caso con array funcion? que se refiere al objeto global, mantiene el enlace del contexto original, del padre,
+            //no crea un scope propio
+            const obj3 = {
+                nombre: "contexto OBJETO 3",
+                imprimir: () => {
+                    console.log(this.nombre);
+                }
+            }
+            obj3.imprimir();
+
+            //que pasa en este caso? 
+            function Persona(nombre) {
+                this.nombre = nombre;
+                //return console.log(this.nombre); //asi crea su propio scope
+                return function () {
+                    console.log(this.nombre); //Al meterlo dentro de una funcion se le llama como jon() y esta en el contexto global porque no tiene una variable nombre dentro de ella
+                }
+            }
+            let jon = new Persona("Jon");
+            jon();
+
+            /*Conclusion:
+                Las arrow function estan en el contexto de su padre
+                Las funciones estan dentro de su propio contexto */
+
+        </script>
+
+    </body>
+
+</html>

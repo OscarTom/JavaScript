@@ -1,0 +1,37 @@
+<!DOCTYPE .html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos Java Script</title>
+  </head>
+
+  <body>
+    <h1>Destructuracion</h1>
+
+    <script>
+      let numeros = [1, 2, 3];
+
+      //guardar cada valor en una variable independiente sin desestructuracion
+      let posUno = numeros[0],
+        posDos = numeros[1],
+        posTres = numeros[2];
+      console.log(posUno, posDos, posTres);
+
+      //Con Destructuracion
+      const [one, two, three] = numeros;
+      console.log(one, two, three);
+
+      //otro ejemplo de Destructuracion
+      const persona = {
+        nombre: "Jon",
+        apellido: "MirCha",
+        edad: 35,
+      };
+
+      //Hay que respetar el nombre
+      let { nombre, apellido, edad } = persona;
+      console.log(nombre, apellido, edad);
+    </script>
+  </body>
+</html>

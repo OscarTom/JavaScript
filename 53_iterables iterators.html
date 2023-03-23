@@ -1,0 +1,36 @@
+<!DOCTYPE.html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Nuevos tipos de datos Java Script</title>
+    </head>
+
+    <body>
+        <h1>Iterables Iterators</h1>
+        
+        <script>
+           const iterable = [1,2,3,4,5];
+
+           //accedemos al iterador de la variable iterable
+           const iterador = iterable[Symbol.iterator]();
+
+           console.log(iterable);
+           console.log(iterador);
+
+           console.log(iterador.next()); // {value: valor, done: se ha acabado?}
+           console.log(iterador.next());
+
+           let next = iterador.next();
+           while (!next.done) {
+               console.log(next.value);
+               next = iterador.next(); //vamos al siguiente elemento
+           }
+
+
+        </script>
+
+    </body>
+
+</html>
