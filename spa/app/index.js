@@ -1,5 +1,5 @@
 import { App } from "./App.js";
-import { Router } from "./components/Router.js";
+import api from "./helpers/wp_api.js";
 
 const d = document;
 
@@ -7,4 +7,7 @@ const d = document;
 d.addEventListener("DOMContentLoaded", App);
 
 // Se ejecuta al detectar el cambio del # en la url del explorador
-window.addEventListener("hashchange", App);
+window.addEventListener("hashchange", () => {
+  api.page = 1;
+  App();
+});
